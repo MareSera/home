@@ -43,15 +43,11 @@ const siteName = import.meta.env.VITE_SITE_NAME;
     align-items: center;
     justify-content: center;
     .loader-circle {
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       border: 3px solid transparent;
       border-top-color: #fff;
-      background-image: url('https://blog.maresera.top/profile.webp'); /* 替换为你的头像图片路径 */
-      background-size: cover !important; /* 确保背景图片覆盖整个圆圈，不重复 */
-      background-position: center !important; /* 背景图片居中显示 */
-      background-repeat: no-repeat !important;
       animation: spin 1.8s linear infinite;
       z-index: 2;
 
