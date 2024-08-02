@@ -48,6 +48,9 @@ const siteName = import.meta.env.VITE_SITE_NAME;
       border-radius: 50%;
       border: 3px solid transparent;
       border-top-color: #fff;
+      background-image: url('https://blog.maresera.top/profile.webp'); /* 替换为你的头像图片路径 */
+      background-size: cover; /* 确保背景图片覆盖整个圆圈，不重复 */
+      background-position: center; /* 背景图片居中显示 */
       animation: spin 1.8s linear infinite;
       z-index: 2;
 
