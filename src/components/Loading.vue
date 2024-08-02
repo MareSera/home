@@ -43,8 +43,8 @@ const siteName = import.meta.env.VITE_SITE_NAME;
     align-items: center;
     justify-content: center;
     .loader-circle {
-      width: 150px;
-      height: 150px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       border: 3px solid transparent;
       border-top-color: #fff;
