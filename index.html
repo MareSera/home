@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站维护中 🛠️</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a8a5e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #2d3436;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Ctext x='8' y='22' font-size='20'%3E🛠️%3C/text%3E%3C/svg%3E"), auto;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .emoji-loader {
+            font-size: 3rem;
+            margin: 2rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #636e72;
+        }
+
+        .countdown {
+            font-size: 1.8rem;
+            margin: 2rem 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .contact {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 10px;
+        }
+
+        .emoji-effect {
+            position: absolute;
+            pointer-events: none;
+            animation: float 1s ease-out forwards;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float {
+            to {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .emoji-loader {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚧 网站维护中 <span>✨</span></h1>
+        <div class="emoji-loader">🛠️⚡️🔧</div>
+        <p>💡 我正在对网站进行重要更新，带来更棒的体验！</p>
+        <p>⏳ 预计剩余时间：<span class="countdown" id="countdown">14:00:00</span></p>
+        <div class="contact">
+            <p>📧 紧急联系：lyt15624134413@gmail.com</p>
+            <p>📱 关注我的社交媒体获取最新动态(@MareSera) 🐦</p>
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date("2025-07-30T12:00:00"); 
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "维护已完成！🎉";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // 带中文单位的显示方式
+            document.getElementById('countdown').innerHTML = 
+                `${days}天 ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // 纯数字显示方式（如需使用请取消注释）
+            // document.getElementById('countdown').innerHTML = 
+            //     `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        /* 下方代码保持不变 */
+        document.addEventListener('click', (e) => {
+            const emojis = ['❤️', '✨', '🎉', '🌟', '💡', '⚡️', '🛠️', '🚀'];
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji-effect';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            emoji.style.left = e.clientX + 'px';
+            emoji.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => emoji.remove(), 1000);
+        });
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        setInterval(() => {
+            const sparkles = document.querySelectorAll('h1 span');
+            sparkles.forEach(sparkle => {
+                sparkle.style.opacity = Math.random();
+            });
+        }, 300);
+</script>
+</body>
+</html>
