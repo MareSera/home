@@ -1,0 +1,98 @@
+// 页面加载动画
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+});
+
+// 平滑滚动和页面切换
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // 更新导航激活状态
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+// 社交图标悬浮动画
+document.querySelectorAll('.icon-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.2) rotate(10deg)';
+        this.style.boxShadow = '0 8px 20px rgba(0, 255, 136, 0.4)';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.boxShadow = 'none';
+    });
+});
+
+// 微信二维码弹窗
+const wechatBtn = document.querySelector('.wechat');
+const qrPopup = document.createElement('div');
+qrPopup.className = 'qr-popup';
+qrPopup.innerHTML = `
+    <div class="qr-content">
+        <img src="https://via.placeholder.com/150" alt="微信二维码">
+        <p>扫码添加微信</p>
+    </div>
+`;
+
+wechatBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.body.appendChild(qrPopup);
+    setTimeout(() => qrPopup.classList.add('show'), 10);
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.wechat')) {
+        qrPopup.classList.remove('show');
+        setTimeout(() => qrPopup.remove(), 300);
+    }
+});
+// 项目卡片交互
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+
+// 表单验证
+document.querySelector('.contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    
+    // 简单验证
+    if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
+        alert('请填写所有必填字段');
+        return;
+    }
+    
+    // 这里可以添加实际的提交逻辑
+    alert('表单提交成功！');
+    e.target.reset();
+});
+
+
+// 项目卡片点击跳转（新增代码）
+document.querySelectorAll('.project-card').forEach(card => {
+    // 在HTML中为每个卡片添加data-link属性
+    card.addEventListener('click', function() {
+        const link = this.dataset.link;
+        if (link) {
+            window.open(link, '_blank'); // 新标签页打开
+            // 如果需要当前页跳转使用：window.location.href = link;
+        }
+    });
+});
