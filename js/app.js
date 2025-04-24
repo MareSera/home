@@ -1,3 +1,52 @@
+
+// 文章数据
+const articles = [
+    // {
+    //     title: "前端工程化实践指南",
+    //     date: "2024-03-20",
+    //     excerpt: "从零搭建现代化前端工作流，整合Webpack+Vite双构建体系...",
+    //     link: "#"
+    // }
+];
+
+// 渲染文章列表
+function renderArticles() {
+    const container = document.getElementById('articlesContainer');
+    container.innerHTML = '';
+    
+    if(articles.length === 0) {
+        container.innerHTML = '<div class="no-articles">暂无近期更新</div>';
+        return;
+    }
+    
+    articles.slice(0, 3).forEach(article => {
+        const articleEl = document.createElement('div');
+        articleEl.className = 'article-item';
+        articleEl.innerHTML = `
+            <div class="article-header">
+                <div class="article-title">${article.title}</div>
+                <div class="article-date">${article.date}</div>
+            </div>
+            <div class="article-excerpt">${article.excerpt}</div>
+        `;
+        articleEl.dataset.link = article.link;
+        container.appendChild(articleEl);
+    });
+}
+
+// 文章点击事件
+document.addEventListener('click', (e) => {
+    const articleItem = e.target.closest('.article-item');
+    if (articleItem) {
+        window.open(articleItem.dataset.link, '_blank');
+    }
+});
+
+// 初始化
+renderArticles();
+
+
+
 // 页面加载动画
 document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
@@ -127,3 +176,4 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('a, button').forEach(element => {
     element.style.webkitTapHighlightColor = 'rgba(0, 255, 136, 0.3)';
 });
+
