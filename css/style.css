@@ -655,3 +655,139 @@ body:not(.loaded) {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    /* 导航栏优化 */
+    .glass-nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        justify-content: space-around;
+        padding: 1rem 0;
+        display: none;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links a {
+        flex-direction: column;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    /* 首页内容调整 */
+    .hero {
+        padding-top: 80px;
+    }
+    
+    .avatar-box {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .gradient-text {
+        font-size: 2rem;
+    }
+    
+    .social-links {
+        gap: 1rem;
+    }
+
+    /* 作品集卡片 */
+    .project-card {
+        height: auto;
+        padding: 1rem;
+    }
+    
+    .project-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* 联系表单 */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 2rem;
+    }
+    
+    .contact-info {
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding-left: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 超小屏幕优化 */
+    .gradient-text {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.75rem;
+    }
+    
+    .contact-info li span {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+/* 移动端 */
+@media (hover: none) {
+    .project-card:hover {
+        transform: none;
+    }
+    
+    .nav-links a:hover {
+        background: transparent;
+    }
+    
+    .icon-btn:hover::before {
+        opacity: 0;
+    }
+}
+
+/* 最小点击区域 */
+a, button {
+    min-width: 44px;
+    min-height: 44px;
+}

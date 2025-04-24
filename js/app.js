@@ -96,3 +96,34 @@ document.querySelectorAll('.project-card').forEach(card => {
         }
     });
 });
+
+// 移动端菜单切换
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// 点击外部关闭菜单
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+        navLinks.classList.remove('active');
+    }
+});
+
+// 优化移动端滚动
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (Math.abs(currentScroll - lastScroll) > 50) {
+        navLinks.classList.remove('active');
+    }
+    lastScroll = currentScroll;
+});
+
+// 优化触摸反馈
+document.querySelectorAll('a, button').forEach(element => {
+    element.style.webkitTapHighlightColor = 'rgba(0, 255, 136, 0.3)';
+});
