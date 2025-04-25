@@ -820,3 +820,23 @@ a, button {
         display: none !important;
     }
 }
+
+/* 颜文字背景特效 */
+.kaomoji-bg {
+    position: fixed;
+    z-index: -1;
+    font-size: 8vw;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    animation: float 20s linear infinite;
+    filter: blur(1px);
+    font-family: Arial, sans-serif;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(5deg); }
+    50% { transform: translateY(10px) rotate(-5deg); }
+    75% { transform: translateY(-10px) rotate(3deg); }
+}

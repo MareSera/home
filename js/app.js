@@ -1,3 +1,50 @@
+// 颜文字库（可自行扩充）
+const kaomojiList = [
+    "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+    "♪(^∇^*)",
+    "( ͡° ͜ʖ ͡°)",
+    "٩(◕‿◕｡)۶",
+    "(•ө•)♡",
+    "ヾ(≧▽≦*)o",
+    "ヽ(✿ﾟ▽ﾟ)ノ",
+    "(´• ω •`)",
+    "(◕‿◕✿)",
+    "(*￣3￣)╭",
+    "(⌒▽⌒)☆",
+    "╰(*°▽°*)╯"
+];
+
+// 生成随机颜文字背景
+// 修改后的颜文字生成逻辑
+function createKaomojiBackground() {
+    const count = 6 + Math.floor(Math.random() * 4); // 6-10个
+    const container = document.createElement('div');
+    
+    for (let i = 0; i < count; i++) {
+        const kaomoji = document.createElement('div');
+        kaomoji.className = 'kaomoji-bg';
+        kaomoji.textContent = kaomojiList[Math.floor(Math.random() * kaomojiList.length)];
+        
+        // 调整后的随机参数
+        kaomoji.style.left = `${Math.random() * 100}%`;
+        kaomoji.style.top = `${Math.random() * 100}%`;
+        kaomoji.style.animationDelay = `${Math.random() * 30}s`;
+        kaomoji.style.animationDuration = `${20 + Math.random() * 20}s`;
+        kaomoji.style.fontSize = `${4 + Math.random() * 8}vw`; // 4-12vw
+        kaomoji.style.opacity = `${0.03 + Math.random() * 0.12}`; // 0.03-0.15
+        kaomoji.style.rotate = `${-10 + Math.random() * 20}deg`;
+        
+        container.appendChild(kaomoji);
+    }
+    
+    document.body.appendChild(container);
+}
+
+
+// 初始化
+document.addEventListener('DOMContentLoaded', createKaomojiBackground);
+
+
 
 // 文章数据
 const articles = [
