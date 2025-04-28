@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', createKaomojiBackground);
 
 // 文章数据
 const articles = [
-    // {
-    //     title: "前端工程化实践指南",
-    //     date: "2024-03-20",
-    //     excerpt: "从零搭建现代化前端工作流，整合Webpack+Vite双构建体系...",
-    //     link: "#"
-    // }
+    {
+        title: "《你当像鸟飞往你的山》图书分享稿",
+        date: "2025-04-28",
+        excerpt: "当你成为飞鸟——在《你当像鸟飞往你的山》中寻找生命的答案",
+        link: "https://blog.maresera.top/posts/educated-read"
+    }
 ];
 
 // 渲染文章列表
