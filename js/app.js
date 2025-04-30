@@ -134,7 +134,7 @@ const qrPopup = document.createElement('div');
 qrPopup.className = 'qr-popup';
 qrPopup.innerHTML = `
     <div class="qr-content">
-        <img src=../img/wechat.jpg alt="微信二维码">
+        <img src=./img/wechat.jpg alt="微信二维码">
         <p>扫码添加微信</p>
     </div>
 `;
