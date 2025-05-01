@@ -1,10 +1,55 @@
-/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-/* @font-face { */
-    /* font-family: 'iconfont';  Project id 4903580 */
-    /* src: url('https://at.alicdn.com/t/c/font_4903580_oe5rvhjptq.woff2?t=1745420008530') format('woff2'),
-         url('https://at.alicdn.com/t/c/font_4903580_oe5rvhjptq.woff?t=1745420008530') format('woff'),
-         url('https://at.alicdn.com/t/c/font_4903580_oe5rvhjptq.ttf?t=1745420008530') format('truetype');
-  } */
+  @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block !important; /* 确保按钮可见 */
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        background: rgba(0,0,0,0.95);
+        padding: 1rem 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 1.2rem;
+        justify-content: center;
+    }
+}
+
+/* 优化触控反馈 */
+@media (hover: none) {
+    .project-card:active {
+        transform: scale(0.98) !important;
+        transition: transform 0.15s ease;
+    }
+    
+    .nav-links a {
+        transition: background 0.2s ease;
+    }
+    
+    .nav-links a:active {
+        background: rgba(255,255,255,0.2) !important;
+    }
+}
+
 
 /* 基础重置 */
 * {
@@ -840,3 +885,5 @@ a, button {
     50% { transform: translateY(10px) rotate(-5deg); }
     75% { transform: translateY(-10px) rotate(3deg); }
 }
+
+
