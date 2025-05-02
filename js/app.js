@@ -1,4 +1,3 @@
-// app.js
 // 颜文字背景生成
 const kaomojiList = ["😎", "🤠", "🥸", "🤩", "🧐", "🥰", "😏", "😶‍🌫️", "🫠", "🥳"];
 
@@ -167,11 +166,37 @@ function initSocialIcons() {
 }
 
 // 文章列表功能
-const articles = [/* 原有文章数据 */];
+const articles = [
+    {
+        title: "《你当像鸟飞往你的山》图书分享稿",
+        date: "2025-04-27",
+        excerpt: "在又一次阅读了《你当像鸟飞往你的山》我决定在校园图书分享会上分享这本书",
+        link: "https://blog.maresera.top/posts/educated-read"
+    },
+];
 
 function renderArticles() {
     const container = document.getElementById('articlesContainer');
-    // 保持原有渲染逻辑
+    container.innerHTML = '';
+    
+    if(articles.length === 0) {
+        container.innerHTML = '<div class="no-articles">暂无近期更新</div>';
+        return;
+    }
+    
+    articles.slice(0, 3).forEach(article => {
+        const articleEl = document.createElement('div');
+        articleEl.className = 'article-item';
+        articleEl.innerHTML = `
+            <div class="article-header">
+                <div class="article-title">${article.title}</div>
+                <div class="article-date">${article.date}</div>
+            </div>
+            <div class="article-excerpt">${article.excerpt}</div>
+        `;
+        articleEl.dataset.link = article.link;
+        container.appendChild(articleEl);
+    });
 }
 
 // 初始化函数
